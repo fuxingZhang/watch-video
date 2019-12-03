@@ -8,7 +8,7 @@ Watch videos by using Node.js as a server
 ### Run
 ```bash
 $ cd watch-video
-$ npm i # just install package "etag"
+$ npm i          # install package "etag" and "mime"
 $ node app
 ```
 

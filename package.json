@@ -4,7 +4,8 @@
   "description": "Watch videos by using Node.js as a server",
   "main": "app.js",
   "dependencies": {
-    "etag": "^1.8.1"
+    "etag": "^1.8.1",
+    "mime": "^2.4.4"
   },
   "devDependencies": {},
   "scripts": {
