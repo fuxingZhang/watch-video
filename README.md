@@ -2,8 +2,8 @@
 Watch videos by using Node.js as a server
 
 ### Prepare
-1. need a video 
-2. edit src of video tag in the index.html
+1. Need a video to put into the public folder
+2. Editing video tag in the public/index.html
 
 ### Run
 ```bash
