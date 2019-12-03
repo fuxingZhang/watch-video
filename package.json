@@ -1,0 +1,27 @@
+{
+  "name": "watch-video",
+  "version": "1.0.0",
+  "description": "Watch videos by using Node.js as a server",
+  "main": "app.js",
+  "dependencies": {
+    "etag": "^1.8.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fuxingZhang/watch-video.git"
+  },
+  "keywords": [
+    "nodejs",
+    "video"
+  ],
+  "author": "Zhang Fu Xing <502545703@qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fuxingZhang/watch-video/issues"
+  },
+  "homepage": "https://github.com/fuxingZhang/watch-video#readme"
+}

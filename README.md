@@ -1,2 +1,13 @@
 # watch-video
-Simple code to watch video by using Node.js as server
+Watch videos by using Node.js as a server
+
+### Prepare
+1. need a video 
+2. edit src of video tag in the index.html
+
+### Run
+```bash
+$ cd watch-video
+$ npm i # just install package "etag"
+$ node app
+```
