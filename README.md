@@ -11,3 +11,5 @@ $ cd watch-video
 $ npm i # just install package "etag"
 $ node app
 ```
+
+Open your browser to http://localhost:3000/
