@@ -1,3 +1,5 @@
-const contentRange = (size, range) => `${range.type} ${range ? `${range.start}-${range.end}` : '*'}/${size}`;
+function contentRange(size, range) {
+  return `${range.type} ${range.start}-${range.end}/${size}`
+}
 
 module.exports = contentRange

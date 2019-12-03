@@ -1,10 +1,12 @@
 const http = require('http');
 const fs = require('fs');
+const etag = require('etag')
 const contentRange = require('./contentRange');
 const parseRange = require('./parseRange');
 const hostname = '0.0.0.0';
 const port = 3000;
-const size = fs.statSync('./public/zfx.mp4').size;
+const stat = fs.statSync('./public/zfx.mp4');
+const size = stat.size;
 
 const server = http.createServer((req, res) => {
   console.log(req.url)
@@ -15,14 +17,24 @@ const server = http.createServer((req, res) => {
       res.end(fs.readFileSync('./public/index.html'))
       break;
     case '/zfx.mp4':
-      res.setHeader('Content-Length', size)
       const range = parseRange(req.headers.range, size);
+      const { start, end } = range;
       res.statusCode = 206
+      res.setHeader('accept-ranges', 'bytes');
+      res.setHeader('content-type', 'video/mp4');
+      res.setHeader('cache-control', 'public, max-age=0');
+      res.setHeader('last-modified', stat.mtime.toUTCString());
+      res.setHeader('ETag', etag(stat))
       res.setHeader('Content-Range', contentRange(size, range));
-      fs.createReadStream('./public/zfx.mp4', {
-        start: range.start,
-        end: range.end
-      }).pipe(res);
+      res.setHeader('Content-Length', end - start + 1)
+      const stream = fs.createReadStream('./public/zfx.mp4', {
+        start,
+        end
+      });
+      stream.on('error', err => {
+        stream.destroy();
+      });
+      stream.pipe(res);
       break;
     default:
       res.end('hi');
@@ -30,5 +42,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+  console.log(`Server running at http://${hostname}:${port}`);
 });
