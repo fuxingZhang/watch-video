@@ -45,6 +45,8 @@ const server = http.createServer((req, res) => {
     // console.log(res.getHeaders());
     stream.pipe(res);
   } else {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
     res.end('hi, i am zfx!');
   }
 });
